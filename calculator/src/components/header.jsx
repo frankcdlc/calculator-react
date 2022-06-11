@@ -7,7 +7,8 @@ function Header() {
     backgroundColor: `#06B6D4`,
     color: `white`,
     textAlign: `center`,
-    fontSize: `2rem`
+    fontSize: `2rem`,
+    gridColumn: `span 5`
   })
 
 
