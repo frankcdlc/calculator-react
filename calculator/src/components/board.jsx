@@ -11,10 +11,10 @@ function Board() {
   grid-template-columns: repeat(5, 100px) ;
   grid-template-rows: repeat(4, 100px);
   `
-  const cart = <i class="ri-check-line"></i>
-  const calend = <i class="ri-calendar-event-fill"></i>
-  const del = <i class="ri-delete-back-2-fill"></i>
-  const divide = <i class="ri-divide-line"></i>
+  const cart = <i className="ri-check-line"></i>
+  const calend = <i className="ri-calendar-event-fill"></i>
+  const del = <i className="ri-delete-back-2-fill"></i>
+  const divide = <i className="ri-divide-line"></i>
 
   const buttonsData = [
     { color: "gray", type: "operator", dato: divide },
