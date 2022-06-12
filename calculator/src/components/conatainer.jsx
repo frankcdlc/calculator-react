@@ -62,6 +62,25 @@ const Container = () => {
     console.log(`operant: ${operant}`)
 
   }
+
+  
+  function handleClickOperant(value) {
+    setPrevNumber(currentNumber);
+    setOperant(value);
+    setCurrentNumber("");
+    console.clear()
+    console.log(`currentNumber:${currentNumber}` )
+    console.log(`prevNumber: ${prevNumber}`)
+    console.log(`operant: ${operant}`)
+  }
+  
+  function handleBackSpace() {
+    try {
+      setCurrentNumber(currentNumber.slice(0, -1)) || setOperant(operant.slice(0,-1)) || setPrevNumber(prevNumber.slice(0,-1))
+    } catch (error) {
+      setCurrentNumber("")
+    }
+  } 
   return (
     <StyledContainer>
       <Header></Header>
