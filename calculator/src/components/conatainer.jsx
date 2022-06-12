@@ -101,6 +101,13 @@ const Container = () => {
     setPrevNumber("")
     setOperant("")
   }
+
+  function handleClear() {
+    setCurrentNumber("0")
+    setOperant("")
+    setPrevNumber("")
+  }
+
   return (
     <StyledContainer>
       <Header></Header>
