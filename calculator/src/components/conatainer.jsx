@@ -111,7 +111,11 @@ const Container = () => {
   return (
     <StyledContainer>
       <Header></Header>
-      <Display></Display>
+      <Display 
+      currentNumber={currentNumber}
+      operant={operant}
+      prevNumber={prevNumber}
+      />
       <>
         {buttonsData.map( (buttonData, index) => (
           <Button
@@ -119,8 +123,13 @@ const Container = () => {
           dato={buttonData.dato} 
           type={buttonData.type}
           color={buttonData.color}
+          onNumberClick={buttonData.type === "number" ? handleNumberClick : buttonData.type === "delete" ? handleBackSpace :  buttonData.type === "operant" ? handleClickOperant : buttonData.type === "spanTwo" ? handleCalculate : buttonData.type === "clear" ? handleClear : "" }
+          value={buttonData.value}
+          
           >
+           {buttonData.dato}
             {buttonData.dato} 
+           {buttonData.dato}
           </Button>
         ) )}
       </>
