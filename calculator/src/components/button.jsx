@@ -28,7 +28,7 @@ const cssButton = {
   }
 }
 
-function Button({styles, dato, color, type, ...props}) {
+function Button({styles, color, value, type,onNumberClick, operant, ...props}) {
   // const { dato, type } = props
 
   const StyledButton = styled.button({
@@ -42,10 +42,17 @@ function Button({styles, dato, color, type, ...props}) {
     ...styles
   })
   
+  function handleNumberClick(e) {
+    onNumberClick(e.target.value)
+  }
+  
   return (
-    <StyledButton {...props}>
-      {dato}
-    </StyledButton>
+    <StyledButton 
+    {...props}
+    onClick={handleNumberClick}
+    value={value}
+    type ={type}
+    />
   )
 }
 
