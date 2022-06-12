@@ -47,6 +47,21 @@ const Container = () => {
   const [currentNumber, setCurrentNumber] = React.useState("");
   const [operant, setOperant] = React.useState("");
   const [prevNumber, setPrevNumber] = React.useState("");
+
+  
+  function handleNumberClick(value) {
+    setCurrentNumber(()=>{
+      // if(currentNumber==="0"){
+      //   setCurrentNumber("0")
+      // }
+      return currentNumber + value
+    })
+    console.clear()
+    console.log(`currentNumber:${currentNumber}` )
+    console.log(`prevNumber: ${prevNumber}`)
+    console.log(`operant: ${operant}`)
+
+  }
   return (
     <StyledContainer>
       <Header></Header>
