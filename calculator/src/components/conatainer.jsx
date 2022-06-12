@@ -37,13 +37,13 @@ const Container = () => {
     { color: "white", type: "number", dato: "7", value: "7" },
     { color: "white", type: "number", dato: "8", value: "8" },
     { color: "white", type: "number", dato: "9", value: "9" },
-    { color: "cyan", type: "spanTwo", dato: calc, value: "" },
+    { color: "cyan", type: "spanTwo", dato: calc, value: "=" },
     { color: "gray", type: "operant", dato: "+", value: "+" },
     { color: "white", type: "", dato: calend, value: "calend" },
     { color: "white", type: "number", dato: "0", value: "0" },
     { color: "white", type: "number", dato: ".", value: "." }
   ]
-  
+
   const [currentNumber, setCurrentNumber] = React.useState("0");
   const [operant, setOperant] = React.useState("");
   const [prevNumber, setPrevNumber] = React.useState("");
@@ -61,12 +61,12 @@ const Container = () => {
   /**
    * to debug
    */
-  React.useEffect(()=>{
-    console.clear()
-    console.log(`currentNumber:${currentNumber}` )
-    console.log(`prevNumber: ${prevNumber}`)
-    console.log(`operant: ${operant}`)
-  },[currentNumber, prevNumber, operant])
+  // React.useEffect(()=>{
+  //   console.clear()
+  //   console.log(`currentNumber:${currentNumber}` )
+  //   console.log(`prevNumber: ${prevNumber}`)
+  //   console.log(`operant: ${operant}`)
+  // },[currentNumber, prevNumber, operant])
   
 
   function handleClickOperant(value) {
@@ -153,9 +153,8 @@ const Container = () => {
           color={buttonData.color}
           onNumberClick={buttonData.type === "number" ? handleNumberClick : buttonData.type === "delete" ? handleBackSpace :  buttonData.type === "operant" ? handleClickOperant : buttonData.type === "spanTwo" ? handleCalculate : buttonData.type === "clear" ? handleClear : "" }
           value={buttonData.value}
-          
           >
-           {buttonData.dato}
+            {buttonData.dato===calc ? (prevNumber && operant ? "=" : buttonData.dato) : buttonData.dato }
           </Button>
         ) )}
       </>

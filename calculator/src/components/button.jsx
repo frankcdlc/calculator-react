@@ -28,7 +28,7 @@ const cssButton = {
   }
 }
 
-function Button({styles, color, value, type,onNumberClick, operant, ...props}) {
+function Button({styles, color, value, type,onNumberClick, operant, tipo, ...props}) {
   // const { dato, type } = props
 
   const StyledButton = styled.button({
