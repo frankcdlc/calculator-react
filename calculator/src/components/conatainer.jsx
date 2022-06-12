@@ -20,7 +20,7 @@ const Container = () => {
   const calc = <i className="ri-check-line"></i>
   const calend = <i className="ri-calendar-event-fill"></i>
   const del = <i className="ri-delete-back-2-fill"></i>
-  const divide = <i className="ri-divide-line"></i>
+  const divide = <i className="ri-divide-line" type={"operant"}></i>
 
   const buttonsData = [
     { color: "gray", type: "operant", dato: divide, value: "÷" },
@@ -37,64 +37,89 @@ const Container = () => {
     { color: "white", type: "number", dato: "7", value: "7" },
     { color: "white", type: "number", dato: "8", value: "8" },
     { color: "white", type: "number", dato: "9", value: "9" },
-    { color: "cyan", type: "spanTwo", dato: calc, value: "÷" },
+    { color: "cyan", type: "spanTwo", dato: calc, value: "" },
     { color: "gray", type: "operant", dato: "+", value: "+" },
     { color: "white", type: "", dato: calend, value: "calend" },
     { color: "white", type: "number", dato: "0", value: "0" },
     { color: "white", type: "number", dato: ".", value: "." }
   ]
   
-  const [currentNumber, setCurrentNumber] = React.useState("");
+  const [currentNumber, setCurrentNumber] = React.useState("0");
   const [operant, setOperant] = React.useState("");
   const [prevNumber, setPrevNumber] = React.useState("");
 
   
   function handleNumberClick(value) {
     setCurrentNumber(()=>{
-      // if(currentNumber==="0"){
-      //   setCurrentNumber("0")
-      // }
+      if(currentNumber==="0"){
+        setCurrentNumber(value)
+      }
       return currentNumber + value
     })
-    console.clear()
-    console.log(`currentNumber:${currentNumber}` )
-    console.log(`prevNumber: ${prevNumber}`)
-    console.log(`operant: ${operant}`)
-
   }
 
-  
-  function handleClickOperant(value) {
-    setPrevNumber(currentNumber);
-    setOperant(value);
-    setCurrentNumber("");
+  /**
+   * to debug
+   */
+  React.useEffect(()=>{
     console.clear()
     console.log(`currentNumber:${currentNumber}` )
     console.log(`prevNumber: ${prevNumber}`)
     console.log(`operant: ${operant}`)
+  },[currentNumber, prevNumber, operant])
+  
+
+  function handleClickOperant(value) {
+
+    if (!operant) {
+      setPrevNumber(currentNumber);
+      setOperant(value);
+      setCurrentNumber("");
+    } else {
+      setOperant(value)
+    }
+
   }
   
   function handleBackSpace() {
     try {
-      setCurrentNumber(currentNumber.slice(0, -1)) || setOperant(operant.slice(0,-1)) || setPrevNumber(prevNumber.slice(0,-1))
+      if(currentNumber.length===1 && !prevNumber){
+        return setCurrentNumber("0")
+      }
+
+      if(prevNumber.length===1 && !currentNumber) {
+        setPrevNumber("")
+        return setCurrentNumber("0")
+      }
+
+      if(currentNumber) {
+        return setCurrentNumber(currentNumber.slice(0, -1))
+      }
+      if(operant) {
+        return setOperant(operant.slice(0,-1))
+      }
+      if(prevNumber) {
+        return setPrevNumber(prevNumber.slice(0,-1))
+      }
     } catch (error) {
-      setCurrentNumber("")
+      setCurrentNumber("0")
     }
   } 
 
   function handleCalculate() {
+
     switch (operant) {
       case "÷":
-        setCurrentNumber(currentNumber / prevNumber);
+        setCurrentNumber(prevNumber / (currentNumber ? currentNumber : prevNumber ) );
         break;
       case "+":
-        setCurrentNumber(+currentNumber + +prevNumber);
+        setCurrentNumber(+prevNumber + +(currentNumber ? currentNumber : prevNumber ));
         break;
       case "-":
-        setCurrentNumber(prevNumber - currentNumber);
+        setCurrentNumber(prevNumber - (currentNumber ? currentNumber : prevNumber ));
         break;
       case "x":
-        setCurrentNumber(currentNumber * prevNumber);
+        setCurrentNumber(prevNumber * (currentNumber ? currentNumber : prevNumber ));
         break;
       default:
     }
@@ -108,6 +133,9 @@ const Container = () => {
     setPrevNumber("")
   }
 
+  /**
+   * Los valores los paso a su modulo por el return
+   */
   return (
     <StyledContainer>
       <Header></Header>
@@ -127,8 +155,6 @@ const Container = () => {
           value={buttonData.value}
           
           >
-           {buttonData.dato}
-            {buttonData.dato} 
            {buttonData.dato}
           </Button>
         ) )}
