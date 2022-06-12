@@ -44,6 +44,9 @@ const Container = () => {
     { color: "white", type: "number", dato: ".", value: "." }
   ]
   
+  const [currentNumber, setCurrentNumber] = React.useState("");
+  const [operant, setOperant] = React.useState("");
+  const [prevNumber, setPrevNumber] = React.useState("");
   return (
     <StyledContainer>
       <Header></Header>
