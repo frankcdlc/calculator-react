@@ -17,7 +17,7 @@ const Container = () => {
     gridTemplateRows: `repeat(6, 100px) 50px`
   })
 
-  const cart = <i className="ri-check-line"></i>
+  const calc = <i className="ri-check-line"></i>
   const calend = <i className="ri-calendar-event-fill"></i>
   const del = <i className="ri-delete-back-2-fill"></i>
   const divide = <i className="ri-divide-line"></i>
