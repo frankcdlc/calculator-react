@@ -81,6 +81,26 @@ const Container = () => {
       setCurrentNumber("")
     }
   } 
+
+  function handleCalculate() {
+    switch (operant) {
+      case "÷":
+        setCurrentNumber(currentNumber / prevNumber);
+        break;
+      case "+":
+        setCurrentNumber(+currentNumber + +prevNumber);
+        break;
+      case "-":
+        setCurrentNumber(prevNumber - currentNumber);
+        break;
+      case "x":
+        setCurrentNumber(currentNumber * prevNumber);
+        break;
+      default:
+    }
+    setPrevNumber("")
+    setOperant("")
+  }
   return (
     <StyledContainer>
       <Header></Header>
