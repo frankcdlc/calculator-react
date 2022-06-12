@@ -23,25 +23,25 @@ const Container = () => {
   const divide = <i className="ri-divide-line"></i>
 
   const buttonsData = [
-    { color: "gray", type: "operator", dato: divide },
-    { color: "white", type: "number", dato: "1" },
-    { color: "white", type: "number", dato: "2" },
-    { color: "white", type: "number", dato: "3" },
-    { color: "white", type: "", dato: del },
-    { color: "gray", type: "operator", dato: "x" },
-    { color: "white", type: "number", dato: "4" },
-    { color: "white", type: "number", dato: "5" },
-    { color: "white", type: "number", dato: "6" },
-    { color: "white", type: "", dato: "c" },
-    { color: "gray", type: "operator", dato: "-" },
-    { color: "white", type: "number", dato: "7" },
-    { color: "white", type: "number", dato: "8" },
-    { color: "white", type: "number", dato: "9" },
-    { color: "cyan", type: "spanTwo", dato: cart },
-    { color: "gray", type: "operator", dato: "+" },
-    { color: "white", type: "", dato: calend },
-    { color: "white", type: "number", dato: "0" },
-    { color: "white", type: "", dato: "." }
+    { color: "gray", type: "operant", dato: divide, value: "÷" },
+    { color: "white", type: "number", dato: "1", value: "1" },
+    { color: "white", type: "number", dato: "2", value: "2" },
+    { color: "white", type: "number", dato: "3", value: "3" },
+    { color: "white", type: "delete", dato: del, value: "del" },
+    { color: "gray", type: "operant", dato: "x", value: "x" },
+    { color: "white", type: "number", dato: "4", value: "4" },
+    { color: "white", type: "number", dato: "5", value: "5" },
+    { color: "white", type: "number", dato: "6", value: "6" },
+    { color: "white", type: "clear", dato: "c", value: "c" },
+    { color: "gray", type: "operant", dato: "-", value: "-" },
+    { color: "white", type: "number", dato: "7", value: "7" },
+    { color: "white", type: "number", dato: "8", value: "8" },
+    { color: "white", type: "number", dato: "9", value: "9" },
+    { color: "cyan", type: "spanTwo", dato: calc, value: "÷" },
+    { color: "gray", type: "operant", dato: "+", value: "+" },
+    { color: "white", type: "", dato: calend, value: "calend" },
+    { color: "white", type: "number", dato: "0", value: "0" },
+    { color: "white", type: "number", dato: ".", value: "." }
   ]
   
   return (
